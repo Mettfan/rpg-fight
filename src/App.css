@@ -1,6 +1,11 @@
+@import url('http://fonts.cdnfonts.com/css/wonder-boy-in-monster-world');
 .App{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Wonder Boy In Monster World', sans-serif;
+  flex-direction: column;
+  
 }
 .userEntry{
   display: flex;
