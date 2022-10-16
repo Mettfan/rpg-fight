@@ -1,8 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-
+import {useDispatch, useSelector} from 'react-redux'
 function App() {
+  let dispatch = useDispatch()
+  let globalState = useSelector( state => state )
   let user = {
     name: '',
     entry: '',
@@ -15,6 +17,10 @@ function App() {
       {
         name: 'punch',
         damage: 5,
+      },
+      {
+        name: 'magic',
+        damage: 20,
       },
   ],
     shield: Math.random()*10, //Could be any number
@@ -84,19 +90,22 @@ function App() {
     console.log(e.target.value);
   }
   return (
+    
     <div className="App">
+
+        {JSON.stringify(globalState)}
       <div className='userEntry'>
         <div>Vida: { ' ' + state.user.life }</div>
         <input name='user' onChange={(e) => {handleUserChange(e)}} type={'text'} placeholder={'Ingrese su ataque'}></input>
         <button onClick={() => {turn('user', state.user.entry, 'enemy')}}>Ataque</button>     
-        {JSON.stringify(state.user)}      
+        {/* {JSON.stringify(state.user)}       */}
       </div>
 
       <div className='enemyEntry'>
       <div>Vida: { ' ' + state.enemy.life }</div>
         <input name='enemy' onChange={(e) => {handleUserChange(e)}} type={'text'} placeholder={'Ingrese su ataque'}></input>           
         <button onClick={ () => {turn('enemy', state.enemy.entry, 'user')} }>Ataque</button>           
-        {JSON.stringify(state.enemy)}      
+        {/* {JSON.stringify(state.enemy)}       */}
       </div>
 
       
