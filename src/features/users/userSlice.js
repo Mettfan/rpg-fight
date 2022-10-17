@@ -117,7 +117,9 @@ const editProduct = createAsyncThunk('products/editProduct', ({id, findBy, infoU
 })
 export const { 
     setCounter,
-    setLife
+    setLife,
+    setUser,
+    setEnemy
 
 } = userSlice.actions
 // export const productSliceReducer = productSlicetest.reducer

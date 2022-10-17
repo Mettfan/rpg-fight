@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
+import { setEnemy, setUser } from './features/users/userSlice';
 function App() {
   let dispatch = useDispatch()
   let globalState = useSelector( state => state )
@@ -89,19 +90,28 @@ function App() {
     })
     console.log(e.target.value);
   }
+  let userLogin = () => {
+    dispatch(setUser(state.user))
+  }
+  let enemyLogin = () => {
+    dispatch(setEnemy(state.enemy))
+  }
   return (
     
     <div className="App">
 
-        {JSON.stringify(globalState)}
+        {JSON.stringify(globalState.users.user)}
       <div className='userEntry'>
+        <button onClick={() => {userLogin()}}>LOGIN</button>
         <div>Vida: { ' ' + state.user.life }</div>
         <input name='user' onChange={(e) => {handleUserChange(e)}} type={'text'} placeholder={'Ingrese su ataque'}></input>
         <button onClick={() => {turn('user', state.user.entry, 'enemy')}}>Ataque</button>     
         {/* {JSON.stringify(state.user)}       */}
       </div>
 
+        {JSON.stringify(globalState.users.enemy)}
       <div className='enemyEntry'>
+      <button onClick={() => {enemyLogin()}}>LOGIN</button>
       <div>Vida: { ' ' + state.enemy.life }</div>
         <input name='enemy' onChange={(e) => {handleUserChange(e)}} type={'text'} placeholder={'Ingrese su ataque'}></input>           
         <button onClick={ () => {turn('enemy', state.enemy.entry, 'user')} }>Ataque</button>           
