@@ -45,7 +45,7 @@ function App() {
   let enemy = {
     name: '',
     entry: '',
-    life: 100,
+    life: 200,
     attacks: [
       {
         name: 'kick',
